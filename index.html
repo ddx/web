@@ -1,10 +1,40 @@
 <!DOCTYPE html>
 <html>
+  <!DOCTYPE html>
+<html>
   <head>
-    <title>Hello World!</title>
+    <style>
+      .sun {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: sunrise-sunset 20s linear infinite;
+      }
+      @keyframes sunrise-sunset {
+        0% {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        50% {
+          top: 20%;
+          left: 80%;
+          transform: translate(-50%, -50%) rotate(180deg);
+        }
+        100% {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to My Landing Page</h1>
-    <p>This is a sample landing page.</p>
+    <div class="sun"></div>
   </body>
 </html>
