@@ -1,40 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <!DOCTYPE html>
-<html>
   <head>
+    <title>Loading Spinner Animation with Rainbow Colors and Countdown</title>
     <style>
-      .sun {
-        width: 100px;
-        height: 100px;
-        background-color: yellow;
-        border-radius: 50%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        animation: sunrise-sunset 20s linear infinite;
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
       }
-      @keyframes sunrise-sunset {
+
+      .spinner {
+        position: relative;
+        margin: auto;
+        border: 80px solid rgba(255, 255, 255, 0.2);
+        border-top: 80px solid #ff0000;
+        border-radius: 50%;
+        width: 300px;
+        height: 300px;
+        animation: spin 1.5s linear infinite;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 10px lightgray;
+      }
+
+      @keyframes spin {
         0% {
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) rotate(0deg);
+          transform: rotate(0deg);
+          border-top-color: #ff0000;
+        }
+        16.67% {
+          border-top-color: #ff8000;
+        }
+        33.33% {
+          border-top-color: #ffff00;
         }
         50% {
-          top: 20%;
-          left: 80%;
-          transform: translate(-50%, -50%) rotate(180deg);
+          border-top-color: #00ff00;
+        }
+        66.67% {
+          border-top-color: #0000ff;
+        }
+        83.33% {
+          border-top-color: #8000ff;
         }
         100% {
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) rotate(360deg);
+          transform: rotate(360deg);
+          border-top-color: #ff0000;
         }
+      }
+
+      .countdown {
+        position: absolute;
+        top: calc(50%+40px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 75px;
+        font-weight: bold;
+        color: black;
+        z-index: 1;
       }
     </style>
   </head>
   <body>
-    <div class="sun"></div>
+    <div class="spinner"></div>
+    <div class="countdown">10</div>
+
+    <script>
+      let countdown = document.querySelector(".countdown");
+      let count = 10;
+
+      let countdownInterval = setInterval(function () {
+        count--;
+        countdown.textContent = count;
+        if (count === 0) {
+          clearInterval(countdownInterval);
+          countdown.textContent = "GO!";
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
